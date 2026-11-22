@@ -8,23 +8,50 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
-:root {
-  --blue: #b9dcf5;
-  --deep: #426b91;
-  --ink: #40566d;
-  --white: #ffffff;
-  --green: #d8eddb;
-  --pink: #f9dce6;
-}
-
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   font-family: 'Nunito', sans-serif;
-  color: var(--ink);
-  background: linear-gradient(180deg, #a9d6f5 0%, #d5eafa 38%, #f1f5ff 75%, #e5f3e6 100%);
+  color: #40566d;
+  background: linear-gradient(180deg, #9dccf0, #c9e4fa 40%, #eaf3ff 75%, #e1f0e5);
   overflow-x: hidden;
+}
+
+.sky-clouds {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  color: white;
+  opacity: .78;
+  font-size: 65px;
+  white-space: nowrap;
+  filter: drop-shadow(0 8px 8px rgba(80,130,170,.08));
+  animation: floatCloud linear infinite alternate;
+}
+
+.c1 { top: 4%; left: 3%; font-size: 85px; animation-duration: 22s; }
+.c2 { top: 12%; right: 4%; font-size: 105px; animation-duration: 28s; }
+.c3 { top: 29%; left: 12%; font-size: 60px; animation-duration: 25s; }
+.c4 { top: 38%; right: 10%; font-size: 90px; animation-duration: 32s; }
+.c5 { top: 53%; left: -2%; font-size: 110px; animation-duration: 30s; }
+.c6 { top: 66%; right: 2%; font-size: 75px; animation-duration: 24s; }
+.c7 { top: 78%; left: 20%; font-size: 95px; animation-duration: 34s; }
+.c8 { top: 88%; right: 20%; font-size: 65px; animation-duration: 27s; }
+.c9 { top: 20%; left: 48%; font-size: 55px; animation-duration: 21s; }
+.c10 { top: 46%; left: 55%; font-size: 70px; animation-duration: 29s; }
+.c11 { top: 72%; left: 65%; font-size: 55px; animation-duration: 23s; }
+.c12 { top: 94%; left: 4%; font-size: 80px; animation-duration: 31s; }
+
+@keyframes floatCloud {
+  from { transform: translateX(-18px); }
+  to { transform: translateX(25px); }
 }
 
 header {
@@ -33,9 +60,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,.38);
+  background: rgba(255,255,255,.48);
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid rgba(255,255,255,.6);
+  border-bottom: 2px solid rgba(255,255,255,.7);
 }
 
 .logo {
@@ -55,7 +82,6 @@ nav a {
   text-align: center;
   padding: 95px 20px 115px;
   position: relative;
-  overflow: hidden;
 }
 
 .hero h1 {
@@ -63,7 +89,7 @@ nav a {
   line-height: 1.05;
   margin: 12px 0;
   color: #426b91;
-  text-shadow: 3px 4px 0 rgba(255,255,255,.65);
+  text-shadow: 3px 4px 0 rgba(255,255,255,.7);
 }
 
 .hero p {
@@ -75,36 +101,19 @@ nav a {
 
 .pigeon {
   font-size: 90px;
-  animation: float 3s ease-in-out infinite;
+  animation: birdFloat 3s ease-in-out infinite;
   display: inline-block;
-  filter: drop-shadow(0 8px 8px rgba(66,107,145,.15));
 }
 
-@keyframes float {
+@keyframes birdFloat {
   0%,100% { transform: translateY(0) rotate(-4deg); }
   50% { transform: translateY(-14px) rotate(4deg); }
-}
-
-.cloud {
-  position: absolute;
-  font-size: 70px;
-  opacity: .8;
-  animation: drift 12s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.cloud.one { top: 45px; left: 5%; }
-.cloud.two { top: 150px; right: 7%; font-size: 90px; animation-delay: -4s; }
-.cloud.three { bottom: 20px; left: 20%; font-size: 55px; animation-delay: -7s; }
-
-@keyframes drift {
-  from { transform: translateX(-12px); }
-  to { transform: translateX(18px); }
 }
 
 section {
   padding: 65px 8%;
   text-align: center;
+  position: relative;
 }
 
 .section-title {
@@ -137,8 +146,8 @@ section {
 }
 
 .card {
-  background: rgba(255,255,255,.75);
-  border: 2px solid rgba(255,255,255,.9);
+  background: rgba(255,255,255,.84);
+  border: 2px solid rgba(255,255,255,.95);
   padding: 28px 22px;
   border-radius: 24px;
   box-shadow: 0 9px 25px rgba(66,107,145,.08);
@@ -146,18 +155,12 @@ section {
 }
 
 .card:hover { transform: translateY(-7px); }
-
 .card .emoji { font-size: 2.6rem; }
-
-.card h3 {
-  color: #426b91;
-  margin-bottom: 8px;
-}
-
+.card h3 { color: #426b91; margin-bottom: 8px; }
 .card p { line-height: 1.7; }
 
 .install {
-  background: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.48);
   border-top: 2px solid rgba(255,255,255,.7);
   border-bottom: 2px solid rgba(255,255,255,.7);
 }
@@ -169,7 +172,7 @@ section {
 }
 
 .step {
-  background: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.9);
   border-radius: 18px;
   padding: 18px 22px;
   margin: 13px 0;
@@ -183,9 +186,7 @@ code {
   color: #426b91;
 }
 
-.download {
-  padding: 85px 20px;
-}
+.download { padding: 85px 20px; }
 
 .download-button {
   display: inline-block;
@@ -201,7 +202,7 @@ code {
 footer {
   text-align: center;
   padding: 30px 15px;
-  background: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.55);
   color: #557b9d;
 }
 
@@ -210,10 +211,30 @@ footer {
   nav a { margin: 0 8px; font-size: .9rem; }
   .hero { padding: 70px 18px 90px; }
   section { padding: 50px 6%; }
+  .cloud { opacity: .55; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  .cloud, .pigeon { animation: none; }
 }
 </style>
 </head>
 <body>
+
+<div class="sky-clouds" aria-hidden="true">
+  <div class="cloud c1">☁️</div>
+  <div class="cloud c2">☁️</div>
+  <div class="cloud c3">☁️</div>
+  <div class="cloud c4">☁️</div>
+  <div class="cloud c5">☁️</div>
+  <div class="cloud c6">☁️</div>
+  <div class="cloud c7">☁️</div>
+  <div class="cloud c8">☁️</div>
+  <div class="cloud c9">☁️</div>
+  <div class="cloud c10">☁️</div>
+  <div class="cloud c11">☁️</div>
+  <div class="cloud c12">☁️</div>
+</div>
 
 <header>
   <div class="logo">🐦 Pip the Pigeon</div>
@@ -226,9 +247,6 @@ footer {
 </header>
 
 <div class="hero">
-  <div class="cloud one">☁️</div>
-  <div class="cloud two">☁️</div>
-  <div class="cloud three">☁️</div>
   <div class="pigeon">🐦</div>
   <h1>Meet Pip!</h1>
   <p>Your tiny desktop pigeon friend. He wanders around your screen, chats with you, and absolutely loves bread.</p>
@@ -271,7 +289,7 @@ footer {
   <h2 class="section-title">Getting Pip ready</h2>
   <p class="intro">Pip needs Ollama for his AI chat. Here's how to set it up.</p>
   <div class="steps">
-    <div class="step"><strong>1. Install Ollama</strong><br>Get Ollama from <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>.</div>
+    <div class="step"><strong>1. Install Ollama</strong><br>Get Ollama from <a href="https://ollama.com/download" target="_blank" rel="noopener noreferrer">ollama.com/download</a>.</div>
     <div class="step"><strong>2. Get Pip's AI model</strong><br>Open Command Prompt and enter:<br><code>ollama pull llama3.2:3b</code></div>
     <div class="step"><strong>3. Open Pip!</strong><br>Once the download is ready, start Pip and enjoy your new desktop friend.</div>
   </div>
@@ -290,3 +308,4 @@ footer {
 
 </body>
 </html>
+

@@ -23,99 +23,25 @@ body {
   color: #40566d;
   background: linear-gradient(
     180deg,
-    #9dccf0 0%,
-    #c5e2f8 40%,
-    #e6f2ff 75%,
+    #c5e2f8 0%,
+    #e6f2ff 55%,
     #e1f0e5 100%
   );
   overflow-x: hidden;
 }
 
-/* FIXED PIXEL CLOUD BACKGROUND */
-
-.pixel-sky {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.pixel-cloud {
-  position: absolute;
-  width: 160px;
-  height: 80px;
-  image-rendering: pixelated;
-  opacity: .78;
-}
-
-.pixel-cloud svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  shape-rendering: crispEdges;
-}
-
-.cloud-one {
-  top: 7%;
-  left: 4%;
-  width: 180px;
-}
-
-.cloud-two {
-  top: 18%;
-  right: 5%;
-  width: 220px;
-}
-
-.cloud-three {
-  top: 39%;
-  left: 13%;
-  width: 145px;
-  opacity: .6;
-}
-
-.cloud-four {
-  top: 57%;
-  right: 12%;
-  width: 190px;
-}
-
-.cloud-five {
-  top: 76%;
-  left: 5%;
-  width: 210px;
-  opacity: .6;
-}
-
-.cloud-six {
-  top: 88%;
-  right: 4%;
-  width: 155px;
-}
-
-/* CONTENT ALWAYS ABOVE CLOUDS */
-
-header,
-.hero,
-section,
-footer {
-  position: relative;
-  z-index: 1;
-}
-
 /* HEADER */
 
 header {
+  position: relative;
+  z-index: 2;
   padding: 22px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,.48);
-  backdrop-filter: blur(12px);
-  border-bottom: 2px solid rgba(255,255,255,.7);
+  background: rgba(255,255,255,.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid white;
 }
 
 .logo {
@@ -131,11 +57,85 @@ nav a {
   margin-left: 22px;
 }
 
-/* HERO */
+/* BLUE SKY HERO */
 
 .hero {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 540px;
+  padding: 100px 20px 120px;
   text-align: center;
-  padding: 95px 20px 115px;
+  background: linear-gradient(
+    180deg,
+    #91c5ed 0%,
+    #b5dafa 65%,
+    #d5eafa 100%
+  );
+}
+
+/* PIXEL CLOUDS - PART OF THE SKY, NOT THE SCREEN */
+
+.pixel-clouds {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.pixel-cloud {
+  position: absolute;
+  width: 180px;
+  height: 90px;
+  opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.pixel-cloud svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  shape-rendering: crispEdges;
+}
+
+.cloud-one {
+  top: 9%;
+  left: 5%;
+  width: 190px;
+}
+
+.cloud-two {
+  top: 25%;
+  right: 5%;
+  width: 230px;
+}
+
+.cloud-three {
+  top: 60%;
+  left: 13%;
+  width: 160px;
+}
+
+.cloud-four {
+  top: 70%;
+  right: 12%;
+  width: 200px;
+}
+
+.cloud-five {
+  top: 45%;
+  left: 45%;
+  width: 140px;
+  opacity: .65;
+}
+
+/* HERO CONTENT */
+
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -168,6 +168,7 @@ nav a {
 /* SECTIONS */
 
 section {
+  position: relative;
   padding: 65px 8%;
   text-align: center;
 }
@@ -282,6 +283,7 @@ code {
 /* FOOTER */
 
 footer {
+  position: relative;
   text-align: center;
   padding: 30px 15px;
   background: rgba(255,255,255,.55);
@@ -303,7 +305,8 @@ footer {
   }
 
   .hero {
-    padding: 70px 18px 90px;
+    padding: 75px 18px 95px;
+    min-height: 480px;
   }
 
   section {
@@ -311,7 +314,7 @@ footer {
   }
 
   .pixel-cloud {
-    opacity: .45;
+    opacity: .65;
   }
 }
 
@@ -329,84 +332,6 @@ footer {
 
 <body>
 
-<!-- PIXEL CLOUDS: FIXED TO THE SCREEN -->
-
-<div class="pixel-sky" aria-hidden="true">
-
-  <div class="pixel-cloud cloud-one">
-    <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-      <path fill="#ffffff" d="
-        M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7
-        H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-      <path fill="#dceeff" d="
-        M2 7 H18 V8 H2 Z
-        M5 5 H7 V7 H5 Z
-        M12 5 H15 V7 H12 Z"/>
-    </svg>
-  </div>
-
-  <div class="pixel-cloud cloud-two">
-    <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-      <path fill="#ffffff" d="
-        M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7
-        H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-      <path fill="#dceeff" d="
-        M2 7 H18 V8 H2 Z
-        M5 5 H7 V7 H5 Z
-        M12 5 H15 V7 H12 Z"/>
-    </svg>
-  </div>
-
-  <div class="pixel-cloud cloud-three">
-    <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-      <path fill="#ffffff" d="
-        M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7
-        H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-      <path fill="#dceeff" d="
-        M2 7 H18 V8 H2 Z
-        M5 5 H7 V7 H5 Z
-        M12 5 H15 V7 H12 Z"/>
-    </svg>
-  </div>
-
-  <div class="pixel-cloud cloud-four">
-    <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-      <path fill="#ffffff" d="
-        M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7
-        H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-      <path fill="#dceeff" d="
-        M2 7 H18 V8 H2 Z
-        M5 5 H7 V7 H5 Z
-        M12 5 H15 V7 H12 Z"/>
-    </svg>
-  </div>
-
-  <div class="pixel-cloud cloud-five">
-    <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-      <path fill="#ffffff" d="
-        M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7
-        H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-      <path fill="#dceeff" d="
-        M2 7 H18 V8 H2 Z
-        M5 5 H7 V7 H5 Z
-        M12 5 H15 V7 H12 Z"/>
-    </svg>
-  </div>
-
-  <div class="pixel-cloud cloud-six">
-    <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-      <path fill="#ffffff" d="
-        M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7
-        H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-      <path fill="#dceeff" d="
-        M2 7 H18 V8 H2 Z
-        M5 5 H7 V7 H5 Z
-        M12 5 H15 V7 H12 Z"/>
-    </svg>
-  </div>
-
-</div>
-
 <header>
   <div class="logo">🐦 Pip the Pigeon</div>
   <nav>
@@ -417,10 +342,55 @@ footer {
   </nav>
 </header>
 
+<!-- THE CLOUDS LIVE INSIDE THIS BLUE SKY -->
+
 <div class="hero">
-  <div class="pigeon">🐦</div>
-  <h1>Meet Pip!</h1>
-  <p>Your tiny desktop pigeon friend. He wanders around your screen, chats with you, and absolutely loves bread.</p>
+
+  <div class="pixel-clouds" aria-hidden="true">
+
+    <div class="pixel-cloud cloud-one">
+      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
+        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
+      </svg>
+    </div>
+
+    <div class="pixel-cloud cloud-two">
+      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
+        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
+      </svg>
+    </div>
+
+    <div class="pixel-cloud cloud-three">
+      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
+        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
+      </svg>
+    </div>
+
+    <div class="pixel-cloud cloud-four">
+      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
+        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
+      </svg>
+    </div>
+
+    <div class="pixel-cloud cloud-five">
+      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
+        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="hero-content">
+    <div class="pigeon">🐦</div>
+    <h1>Meet Pip!</h1>
+    <p>Your tiny desktop pigeon friend. He wanders around your screen, chats with you, and absolutely loves bread.</p>
+  </div>
+
 </div>
 
 <section id="about">
@@ -497,4 +467,3 @@ footer {
 
 </body>
 </html>
-

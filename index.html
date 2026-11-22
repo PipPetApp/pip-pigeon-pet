@@ -4,142 +4,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pip the Pigeon 🐦 | Your Desktop Buddy</title>
-<meta name="description" content="Meet Pip, your adorable pixel-art pigeon desktop pet for Windows!">
-
+<title>Pip the Pigeon 🐦</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
 :root {
-  --cream: #fff9eb;
-  --green: #c9dfc6;
-  --dark: #34483b;
-  --sage: #78977c;
-  --orange: #efad70;
-  --pink: #f3c7bb;
+  --blue: #b9dcf5;
+  --deep: #426b91;
+  --ink: #40566d;
+  --white: #ffffff;
+  --green: #d8eddb;
+  --pink: #f9dce6;
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  background: var(--cream);
-  color: var(--dark);
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #a9d6f5 0%, #d5eafa 38%, #f1f5ff 75%, #e5f3e6 100%);
+  overflow-x: hidden;
 }
 
 header {
-  background: var(--green);
-  padding: 18px 7%;
+  position: relative;
+  padding: 22px 8%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-  border-bottom: 4px solid var(--dark);
+  align-items: center;
+  background: rgba(255,255,255,.38);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255,255,255,.6);
 }
 
 .logo {
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 900;
+  color: #426b91;
 }
 
 nav a {
-  color: var(--dark);
+  color: #426b91;
   text-decoration: none;
-  font-weight: bold;
-  margin-left: 20px;
+  font-weight: 800;
+  margin-left: 22px;
 }
 
-nav a:hover { text-decoration: underline; }
-
 .hero {
-  padding: 85px 8%;
   text-align: center;
-  background: var(--cream);
+  padding: 95px 20px 115px;
   position: relative;
   overflow: hidden;
 }
 
 .hero h1 {
-  font-size: clamp(42px, 7vw, 76px);
-  margin: 15px 0;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1.05;
+  margin: 12px 0;
+  color: #426b91;
+  text-shadow: 3px 4px 0 rgba(255,255,255,.65);
 }
 
 .hero p {
-  font-size: 19px;
-  max-width: 600px;
-  line-height: 1.7;
-  margin: 15px auto 30px;
+  font-size: 1.2rem;
+  max-width: 550px;
+  margin: 18px auto 28px;
+  line-height: 1.8;
 }
 
 .pigeon {
-  font-size: 100px;
+  font-size: 90px;
+  animation: float 3s ease-in-out infinite;
   display: inline-block;
-  animation: bob 2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 8px rgba(66,107,145,.15));
 }
 
-@keyframes bob {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-13px) rotate(4deg); }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-14px) rotate(4deg); }
 }
 
-.button {
-  display: inline-block;
-  background: var(--sage);
-  color: white;
-  padding: 15px 25px;
-  border: 3px solid var(--dark);
-  border-radius: 12px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 4px 4px 0 var(--dark);
-  transition: .2s;
+.cloud {
+  position: absolute;
+  font-size: 70px;
+  opacity: .8;
+  animation: drift 12s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 6px 7px 0 var(--dark);
+.cloud.one { top: 45px; left: 5%; }
+.cloud.two { top: 150px; right: 7%; font-size: 90px; animation-delay: -4s; }
+.cloud.three { bottom: 20px; left: 20%; font-size: 55px; animation-delay: -7s; }
+
+@keyframes drift {
+  from { transform: translateX(-12px); }
+  to { transform: translateX(18px); }
 }
 
-.button.disabled {
-  background: #aab2a8;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.note {
-  font-size: 13px !important;
-  margin-top: 18px !important;
-}
-
-.section {
-  padding: 75px 8%;
+section {
+  padding: 65px 8%;
   text-align: center;
 }
 
-.section h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
+.section-title {
+  font-size: 2.5rem;
+  color: #426b91;
+  margin: 0 0 15px;
 }
 
-.section-intro {
+.intro {
   max-width: 650px;
   margin: 0 auto 35px;
-  line-height: 1.7;
+  line-height: 1.8;
+  font-size: 1.08rem;
 }
 
 .screenshot {
-  max-width: 900px;
+  max-width: 850px;
   width: 100%;
-  border: 5px solid var(--dark);
-  border-radius: 16px;
-  box-shadow: 9px 9px 0 var(--green);
+  border-radius: 24px;
+  border: 8px solid white;
+  box-shadow: 0 15px 40px rgba(66,107,145,.16);
 }
 
-.about { background: var(--green); }
-
-.cards {
+.features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 22px;
@@ -148,75 +137,86 @@ nav a:hover { text-decoration: underline; }
 }
 
 .card {
-  background: white;
+  background: rgba(255,255,255,.75);
+  border: 2px solid rgba(255,255,255,.9);
   padding: 28px 22px;
-  border: 3px solid var(--dark);
-  border-radius: 16px;
-  box-shadow: 5px 5px 0 var(--dark);
-  transition: transform .2s;
+  border-radius: 24px;
+  box-shadow: 0 9px 25px rgba(66,107,145,.08);
+  transition: transform .2s ease;
 }
 
-.card:hover { transform: translateY(-6px); }
+.card:hover { transform: translateY(-7px); }
 
-.card .emoji { font-size: 42px; }
+.card .emoji { font-size: 2.6rem; }
 
-.card h3 { margin-bottom: 10px; }
+.card h3 {
+  color: #426b91;
+  margin-bottom: 8px;
+}
 
-.card p { line-height: 1.6; }
+.card p { line-height: 1.7; }
 
-.install { background: #f5e4d2; }
+.install {
+  background: rgba(255,255,255,.35);
+  border-top: 2px solid rgba(255,255,255,.7);
+  border-bottom: 2px solid rgba(255,255,255,.7);
+}
 
 .steps {
-  max-width: 700px;
-  margin: 35px auto;
+  max-width: 650px;
+  margin: 30px auto;
   text-align: left;
 }
 
 .step {
-  background: white;
-  border: 2px solid var(--dark);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 15px;
+  background: rgba(255,255,255,.8);
+  border-radius: 18px;
+  padding: 18px 22px;
+  margin: 13px 0;
+  line-height: 1.7;
 }
 
-.step h3 { margin-top: 0; }
-
 code {
-  background: #e9eee5;
-  padding: 5px 8px;
-  border-radius: 5px;
-  overflow-wrap: anywhere;
+  background: #e5effb;
+  padding: 4px 8px;
+  border-radius: 7px;
+  color: #426b91;
+}
+
+.download {
+  padding: 85px 20px;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 40px;
+  background: #91b6d7;
+  color: white;
+  font-weight: 900;
+  margin-top: 12px;
+  opacity: .75;
 }
 
 footer {
   text-align: center;
-  padding: 35px 15px;
-  background: var(--green);
-  border-top: 4px solid var(--dark);
-  line-height: 1.8;
+  padding: 30px 15px;
+  background: rgba(255,255,255,.45);
+  color: #557b9d;
 }
 
-.feather {
-  color: var(--sage);
-  font-size: 25px;
-  margin: 12px;
-}
-
-@media (max-width: 600px) {
-  header { justify-content: center; }
-  nav { text-align: center; }
-  nav a { margin: 0 7px; font-size: 14px; }
-  .hero { padding: 65px 6%; }
-  .section { padding: 55px 6%; }
+@media(max-width:600px) {
+  header { flex-direction: column; gap: 12px; }
+  nav a { margin: 0 8px; font-size: .9rem; }
+  .hero { padding: 70px 18px 90px; }
+  section { padding: 50px 6%; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">🐦 Pip's Pigeon Palace</div>
+  <div class="logo">🐦 Pip the Pigeon</div>
   <nav>
     <a href="#about">About</a>
     <a href="#features">Features</a>
@@ -225,111 +225,67 @@ footer {
   </nav>
 </header>
 
-<section class="hero">
+<div class="hero">
+  <div class="cloud one">☁️</div>
+  <div class="cloud two">☁️</div>
+  <div class="cloud three">☁️</div>
   <div class="pigeon">🐦</div>
   <h1>Meet Pip!</h1>
-  <p>Your very own little pigeon who lives right on your Windows desktop.
-  He wanders, talks, makes friends and LOVES bread.</p>
-  <a class="button" href="#about">Meet your new buddy ↓</a>
-  <p class="note">Made with 💚 and an unreasonable amount of bread.</p>
+  <p>Your tiny desktop pigeon friend. He wanders around your screen, chats with you, and absolutely loves bread.</p>
+</div>
+
+<section id="about">
+  <h2 class="section-title">A little bird for your desktop</h2>
+  <p class="intro">Pip isn't just a pet. He's a tiny companion who hangs out while you work, play, or simply enjoy your computer.</p>
+  <img class="screenshot" src="pip-desktop.png" alt="Pip the Pigeon on a desktop">
 </section>
 
-<section class="section" id="about">
-  <h2>Who is Pip?</h2>
-  <p class="section-intro">
-    Pip is a tiny desktop companion with a big personality.
-    He hangs out on your screen, wanders around and occasionally
-    has something very important to say.
-  </p>
-
-  <img class="screenshot"
-       src="pip-desktop.png"
-       alt="Pip the pigeon wandering on a Windows desktop">
-
-  <p class="feather">✦ A little friend for your desktop ✦</p>
-</section>
-
-<section class="section" id="features">
-  <h2>What can Pip do?</h2>
-  <p class="section-intro">Small pigeon. Big personality.</p>
-
-  <div class="cards">
+<section id="features">
+  <h2 class="section-title">What can Pip do?</h2>
+  <p class="intro">He's small, silly, and full of personality!</p>
+  <div class="features">
     <div class="card">
       <div class="emoji">🚶</div>
       <h3>Wanders around</h3>
-      <p>Pip explores your desktop instead of sitting still all day.</p>
+      <p>Pip walks around your desktop and keeps you company.</p>
     </div>
-
     <div class="card">
       <div class="emoji">💬</div>
-      <h3>Has things to say</h3>
-      <p>Click Pip and he'll surprise you with silly little messages.</p>
+      <h3>Little messages</h3>
+      <p>Click Pip and he'll pop up with a random message.</p>
     </div>
-
     <div class="card">
       <div class="emoji">🤖</div>
-      <h3>AI conversations</h3>
-      <p>Chat with Pip using Ollama and a locally running AI model.</p>
+      <h3>AI chat</h3>
+      <p>Right-click Pip to open a chat powered by your local Ollama model.</p>
     </div>
-
     <div class="card">
       <div class="emoji">🍞</div>
-      <h3>Bread enthusiast</h3>
-      <p>Give Pip bread. Seriously. He absolutely loves it.</p>
+      <h3>Give him bread!</h3>
+      <p>Offer Pip some bread and watch him get very excited.</p>
     </div>
   </div>
 </section>
 
-<section class="section install" id="install">
-  <h2>How to set up Pip</h2>
-  <p class="section-intro">
-    Pip is made for Windows. His optional AI chat runs locally
-    through Ollama.
-  </p>
-
+<section class="install" id="install">
+  <h2 class="section-title">Getting Pip ready</h2>
+  <p class="intro">Pip needs Ollama for his AI chat. Here's how to set it up.</p>
   <div class="steps">
-    <div class="step">
-      <h3>1. Get Ollama</h3>
-      <p>Download Ollama from its official website:</p>
-      <a href="https://ollama.com/download"
-         target="_blank" rel="noopener">Download Ollama ↗</a>
-    </div>
-
-    <div class="step">
-      <h3>2. Get Pip's AI model</h3>
-      <p>Open Command Prompt and enter:</p>
-      <code>ollama pull llama3.2:3b</code>
-    </div>
-
-    <div class="step">
-      <h3>3. Open Pip</h3>
-      <p>Once the verified Pip release is available, extract the download
-      and open Pip's application.</p>
-    </div>
-
-    <div class="step">
-      <h3>4. Say hello!</h3>
-      <p>Right-click Pip to chat. Left-click him for a silly message.
-      And don't forget the bread!</p>
-    </div>
+    <div class="step"><strong>1. Install Ollama</strong><br>Get Ollama from <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>.</div>
+    <div class="step"><strong>2. Get Pip's AI model</strong><br>Open Command Prompt and enter:<br><code>ollama pull llama3.2:3b</code></div>
+    <div class="step"><strong>3. Open Pip!</strong><br>Once the download is ready, start Pip and enjoy your new desktop friend.</div>
   </div>
 </section>
 
-<section class="section" id="download">
-  <h2>Bring Pip home!</h2>
-  <div class="pigeon">🐦</div>
-  <p class="section-intro">
-    Pip's first public release is being prepared.
-    We're completing security reviews before making the download available.
-  </p>
-  <span class="button disabled">Download coming soon!</span>
-  <p class="note">Thanks for waiting for Pip. He appreciates the bread. 🍞</p>
+<section class="download" id="download">
+  <h2 class="section-title">Bring Pip home!</h2>
+  <p class="intro">Pip's download is being prepared. Check back soon!</p>
+  <span class="download-button">🐦 Download coming soon!</span>
 </section>
 
 <footer>
-  <strong>Pip's Pigeon Palace 🐦</strong><br>
-  A tiny pigeon with a huge personality.<br>
-  Made with 💚 and lots of bread.
+  Made with 💙 and a little bit of bread 🍞<br>
+  © Pip the Pigeon
 </footer>
 
 </body>

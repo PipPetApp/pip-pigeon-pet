@@ -4,109 +4,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pip the Pigeon 🐦</title>
+<title>Pip the Pigeon 🐦 | Your Desktop Buddy</title>
+<meta name="description" content="Meet Pip, your adorable pixel-art pigeon desktop pet for Windows!">
+
 <style>
-* {
-    box-sizing: border-box;
+:root {
+  --cream: #fff9eb;
+  --green: #c9dfc6;
+  --dark: #34483b;
+  --sage: #78977c;
+  --orange: #efad70;
+  --pink: #f3c7bb;
 }
 
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
-    margin: 0;
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    background: #f5f1e7;
-    color: #354238;
-    text-align: center;
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: var(--cream);
+  color: var(--dark);
 }
 
 header {
-    background: #dcebdc;
-    padding: 22px;
-    border-bottom: 4px solid #789b7c;
+  background: var(--green);
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  border-bottom: 4px solid var(--dark);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 30px;
+.logo {
+  font-size: 25px;
+  font-weight: 900;
 }
+
+nav a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+nav a:hover { text-decoration: underline; }
 
 .hero {
-    padding: 65px 20px 55px;
+  padding: 85px 8%;
+  text-align: center;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  margin: 15px 0;
+}
+
+.hero p {
+  font-size: 19px;
+  max-width: 600px;
+  line-height: 1.7;
+  margin: 15px auto 30px;
 }
 
 .pigeon {
-    font-size: 105px;
-    image-rendering: pixelated;
-    margin-bottom: 10px;
+  font-size: 100px;
+  display: inline-block;
+  animation: bob 2s ease-in-out infinite;
 }
 
-h2 {
-    font-size: 34px;
-    margin: 10px;
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-13px) rotate(4deg); }
 }
 
-.subtitle {
-    font-size: 18px;
-    color: #68776b;
-    line-height: 1.6;
+.button {
+  display: inline-block;
+  background: var(--sage);
+  color: white;
+  padding: 15px 25px;
+  border: 3px solid var(--dark);
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--dark);
+  transition: .2s;
 }
 
-.download {
-    display: inline-block;
-    margin: 25px 0;
-    padding: 17px 35px;
-    background: #609b75;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 19px;
-    border: 3px solid #426e51;
-    border-radius: 12px;
-    box-shadow: 0 5px #426e51;
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 7px 0 var(--dark);
 }
 
-.download:hover {
-    transform: translateY(3px);
-    box-shadow: 0 2px #426e51;
+.button.disabled {
+  background: #aab2a8;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
-section {
-    max-width: 750px;
-    margin: 25px auto;
-    padding: 30px 22px;
-    background: #fffdf6;
-    border: 2px solid #d5dfd0;
-    border-radius: 18px;
+.note {
+  font-size: 13px !important;
+  margin-top: 18px !important;
 }
 
-section h2 {
-    font-size: 25px;
+.section {
+  padding: 75px 8%;
+  text-align: center;
 }
 
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
 }
 
-.feature {
-    background: #eaf2e7;
-    padding: 20px;
-    border-radius: 12px;
+.section-intro {
+  max-width: 650px;
+  margin: 0 auto 35px;
+  line-height: 1.7;
 }
 
-.feature strong {
-    display: block;
-    margin-bottom: 8px;
+.screenshot {
+  max-width: 900px;
+  width: 100%;
+  border: 5px solid var(--dark);
+  border-radius: 16px;
+  box-shadow: 9px 9px 0 var(--green);
+}
+
+.about { background: var(--green); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  max-width: 1050px;
+  margin: 35px auto 0;
+}
+
+.card {
+  background: white;
+  padding: 28px 22px;
+  border: 3px solid var(--dark);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--dark);
+  transition: transform .2s;
+}
+
+.card:hover { transform: translateY(-6px); }
+
+.card .emoji { font-size: 42px; }
+
+.card h3 { margin-bottom: 10px; }
+
+.card p { line-height: 1.6; }
+
+.install { background: #f5e4d2; }
+
+.steps {
+  max-width: 700px;
+  margin: 35px auto;
+  text-align: left;
+}
+
+.step {
+  background: white;
+  border: 2px solid var(--dark);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.step h3 { margin-top: 0; }
+
+code {
+  background: #e9eee5;
+  padding: 5px 8px;
+  border-radius: 5px;
+  overflow-wrap: anywhere;
 }
 
 footer {
-    padding: 30px;
-    color: #718073;
+  text-align: center;
+  padding: 35px 15px;
+  background: var(--green);
+  border-top: 4px solid var(--dark);
+  line-height: 1.8;
 }
 
-.small {
-    font-size: 14px;
-    color: #788479;
+.feather {
+  color: var(--sage);
+  font-size: 25px;
+  margin: 12px;
+}
+
+@media (max-width: 600px) {
+  header { justify-content: center; }
+  nav { text-align: center; }
+  nav a { margin: 0 7px; font-size: 14px; }
+  .hero { padding: 65px 6%; }
+  .section { padding: 55px 6%; }
 }
 </style>
 </head>
@@ -114,75 +216,120 @@ footer {
 <body>
 
 <header>
-    <h1>🐦 PIP THE PIGEON</h1>
+  <div class="logo">🐦 Pip's Pigeon Palace</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#features">Features</a>
+    <a href="#install">Setup</a>
+    <a href="#download">Download</a>
+  </nav>
 </header>
 
-<div class="hero">
-    <div class="pigeon">🐦</div>
-    <h2>Meet Pip!</h2>
-
-    <p class="subtitle">
-        Your very own little desktop pigeon.<br>
-        He wanders around, talks to you and LOVES bread.
-    </p>
-
-    <a class="download" href="#download">
-        DOWNLOAD PIP 🐦
-    </a>
-
-    <p class="small">Currently made for Windows</p>
-</div>
-
-<section>
-    <h2>Who is Pip?</h2>
-    <p>
-        Hi! My name is Pip, but some people call me Gub.
-        I'm a friendly little pigeon who lives on your desktop.
-        I enjoy wandering around, chatting and eating bread.
-    </p>
+<section class="hero">
+  <div class="pigeon">🐦</div>
+  <h1>Meet Pip!</h1>
+  <p>Your very own little pigeon who lives right on your Windows desktop.
+  He wanders, talks, makes friends and LOVES bread.</p>
+  <a class="button" href="#about">Meet your new buddy ↓</a>
+  <p class="note">Made with 💚 and an unreasonable amount of bread.</p>
 </section>
 
-<section>
-    <h2>What can Pip do?</h2>
+<section class="section" id="about">
+  <h2>Who is Pip?</h2>
+  <p class="section-intro">
+    Pip is a tiny desktop companion with a big personality.
+    He hangs out on your screen, wanders around and occasionally
+    has something very important to say.
+  </p>
 
-    <div class="features">
-        <div class="feature">
-            <strong>🚶 Wander around</strong>
-            Pip explores your desktop.
-        </div>
+  <img class="screenshot"
+       src="pip-desktop.png"
+       alt="Pip the pigeon wandering on a Windows desktop">
 
-        <div class="feature">
-            <strong>💬 Talk to you</strong>
-            Click Pip to hear his funny comments.
-        </div>
+  <p class="feather">✦ A little friend for your desktop ✦</p>
+</section>
 
-        <div class="feature">
-            <strong>🤖 AI chat</strong>
-            Chat with Pip using Ollama.
-        </div>
+<section class="section" id="features">
+  <h2>What can Pip do?</h2>
+  <p class="section-intro">Small pigeon. Big personality.</p>
 
-        <div class="feature">
-            <strong>🍞 Give him bread</strong>
-            He LOVES snacks!
-        </div>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🚶</div>
+      <h3>Wanders around</h3>
+      <p>Pip explores your desktop instead of sitting still all day.</p>
     </div>
+
+    <div class="card">
+      <div class="emoji">💬</div>
+      <h3>Has things to say</h3>
+      <p>Click Pip and he'll surprise you with silly little messages.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🤖</div>
+      <h3>AI conversations</h3>
+      <p>Chat with Pip using Ollama and a locally running AI model.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🍞</div>
+      <h3>Bread enthusiast</h3>
+      <p>Give Pip bread. Seriously. He absolutely loves it.</p>
+    </div>
+  </div>
 </section>
 
-<section id="download">
-    <h2>Bring Pip home!</h2>
-    <p>
-        Your desktop is missing a pigeon.
-        Let's fix that.
-    </p>
+<section class="section install" id="install">
+  <h2>How to set up Pip</h2>
+  <p class="section-intro">
+    Pip is made for Windows. His optional AI chat runs locally
+    through Ollama.
+  </p>
 
-    <p class="small">
-        Download instructions and the app will be available here soon!
-    </p>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Get Ollama</h3>
+      <p>Download Ollama from its official website:</p>
+      <a href="https://ollama.com/download"
+         target="_blank" rel="noopener">Download Ollama ↗</a>
+    </div>
+
+    <div class="step">
+      <h3>2. Get Pip's AI model</h3>
+      <p>Open Command Prompt and enter:</p>
+      <code>ollama pull llama3.2:3b</code>
+    </div>
+
+    <div class="step">
+      <h3>3. Open Pip</h3>
+      <p>Once the verified Pip release is available, extract the download
+      and open Pip's application.</p>
+    </div>
+
+    <div class="step">
+      <h3>4. Say hello!</h3>
+      <p>Right-click Pip to chat. Left-click him for a silly message.
+      And don't forget the bread!</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <h2>Bring Pip home!</h2>
+  <div class="pigeon">🐦</div>
+  <p class="section-intro">
+    Pip's first public release is being prepared.
+    We're completing security reviews before making the download available.
+  </p>
+  <span class="button disabled">Download coming soon!</span>
+  <p class="note">Thanks for waiting for Pip. He appreciates the bread. 🍞</p>
 </section>
 
 <footer>
-    Made with 💚 and lots of bread.<br>
-    Pip the Pigeon © 2026
+  <strong>Pip's Pigeon Palace 🐦</strong><br>
+  A tiny pigeon with a huge personality.<br>
+  Made with 💚 and lots of bread.
 </footer>
 
 </body>

@@ -7,325 +7,240 @@
 <title>Pip the Pigeon 🐦</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
-
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: 'Nunito', sans-serif;
-  color: #40566d;
-  background: linear-gradient(
-    180deg,
-    #c5e2f8 0%,
-    #e6f2ff 55%,
-    #e1f0e5 100%
-  );
-  overflow-x: hidden;
+    margin: 0;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #34445a;
+    background: linear-gradient(#eaf6ff, #f5faff 55%, #e8f4ed);
 }
 
-/* HEADER */
-
 header {
-  position: relative;
-  z-index: 2;
-  padding: 22px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,.65);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 5;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #426b91;
+    font-size: 23px;
+    font-weight: bold;
+    color: #506b88;
 }
 
 nav a {
-  color: #426b91;
-  text-decoration: none;
-  font-weight: 800;
-  margin-left: 22px;
+    margin-left: 22px;
+    text-decoration: none;
+    color: #526b83;
+    font-weight: bold;
 }
-
-/* BLUE SKY HERO */
 
 .hero {
-  position: relative;
-  z-index: 1;
-  isolation: isolate;
-  overflow: hidden;
-  min-height: 540px;
-  padding: 100px 20px 120px;
-  text-align: center;
-  background: linear-gradient(
-    180deg,
-    #91c5ed 0%,
-    #b5dafa 65%,
-    #d5eafa 100%
-  );
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 540px;
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(#9dd5f5, #c7e8fa);
 }
-
-/* PIXEL CLOUDS - PART OF THE SKY, NOT THE SCREEN */
 
 .pixel-clouds {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.pixel-cloud {
-  position: absolute;
-  width: 180px;
-  height: 90px;
-  opacity: .9;
-  shape-rendering: crispEdges;
+.cloud {
+    position: absolute;
+    width: 180px;
+    opacity: 0.85;
+    image-rendering: pixelated;
+    animation: float 9s ease-in-out infinite alternate;
 }
 
-.pixel-cloud svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  shape-rendering: crispEdges;
+.cloud.one {
+    top: 65px;
+    left: 8%;
 }
 
-.cloud-one {
-  top: 9%;
-  left: 5%;
-  width: 190px;
+.cloud.two {
+    top: 190px;
+    right: 9%;
+    transform: scale(1.2);
+    animation-delay: 2s;
 }
 
-.cloud-two {
-  top: 25%;
-  right: 5%;
-  width: 230px;
+.cloud.three {
+    top: 350px;
+    left: 35%;
+    transform: scale(0.8);
+    animation-delay: 4s;
 }
 
-.cloud-three {
-  top: 60%;
-  left: 13%;
-  width: 160px;
+@keyframes float {
+    from { margin-left: -10px; }
+    to { margin-left: 25px; }
 }
-
-.cloud-four {
-  top: 70%;
-  right: 12%;
-  width: 200px;
-}
-
-.cloud-five {
-  top: 45%;
-  left: 45%;
-  width: 140px;
-  opacity: .65;
-}
-
-/* HERO CONTENT */
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 1.05;
-  margin: 12px 0;
-  color: #426b91;
-  text-shadow: 3px 4px 0 rgba(255,255,255,.7);
-}
-
-.hero p {
-  font-size: 1.2rem;
-  max-width: 550px;
-  margin: 18px auto 28px;
-  line-height: 1.8;
+    position: relative;
+    z-index: 1;
 }
 
 .pigeon {
-  font-size: 90px;
-  display: inline-block;
-  animation: birdFloat 3s ease-in-out infinite;
-  filter: drop-shadow(0 8px 8px rgba(66,107,145,.15));
+    font-size: 95px;
+    animation: bob 2s infinite ease-in-out;
 }
 
-@keyframes birdFloat {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-14px) rotate(4deg); }
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-13px); }
 }
 
-/* SECTIONS */
+h1 {
+    font-size: clamp(38px, 7vw, 65px);
+    margin: 10px 0;
+    color: #405c78;
+}
+
+.hero p {
+    font-size: 19px;
+}
 
 section {
-  position: relative;
-  padding: 65px 8%;
-  text-align: center;
+    padding: 65px 8%;
+    text-align: center;
 }
 
 .section-title {
-  font-size: 2.5rem;
-  color: #426b91;
-  margin: 0 0 15px;
-  text-shadow: 1px 2px 0 rgba(255,255,255,.5);
+    font-size: 34px;
+    color: #506b88;
+    margin-bottom: 18px;
 }
 
-.intro {
-  max-width: 650px;
-  margin: 0 auto 35px;
-  line-height: 1.8;
-  font-size: 1.08rem;
+.about {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 17px;
 }
-
-/* SCREENSHOT */
-
-.screenshot {
-  max-width: 850px;
-  width: 100%;
-  border-radius: 24px;
-  border: 8px solid white;
-  box-shadow: 0 15px 40px rgba(66,107,145,.16);
-}
-
-/* FEATURE CARDS */
 
 .features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  max-width: 1050px;
-  margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 22px;
+    margin-top: 35px;
 }
 
 .card {
-  background: rgba(255,255,255,.86);
-  border: 2px solid rgba(255,255,255,.95);
-  padding: 28px 22px;
-  border-radius: 24px;
-  box-shadow: 0 9px 25px rgba(66,107,145,.08);
-  transition: transform .2s ease;
-}
-
-.card:hover {
-  transform: translateY(-7px);
+    background: rgba(255,255,255,0.85);
+    border-radius: 22px;
+    padding: 28px 22px;
+    box-shadow: 0 8px 25px rgba(91,130,160,0.09);
 }
 
 .card .emoji {
-  font-size: 2.6rem;
+    font-size: 42px;
 }
 
 .card h3 {
-  color: #426b91;
-  margin-bottom: 8px;
+    color: #597c9c;
 }
 
-.card p {
-  line-height: 1.7;
-}
-
-/* INSTALLATION */
-
-.install {
-  background: rgba(255,255,255,.42);
-  border-top: 2px solid rgba(255,255,255,.7);
-  border-bottom: 2px solid rgba(255,255,255,.7);
-  backdrop-filter: blur(3px);
+.screenshot {
+    width: min(100%, 850px);
+    border: 7px solid white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(70,110,145,0.15);
+    margin-top: 25px;
 }
 
 .steps {
-  max-width: 650px;
-  margin: 30px auto;
-  text-align: left;
+    max-width: 700px;
+    margin: 30px auto;
+    text-align: left;
+    line-height: 1.9;
 }
 
-.step {
-  background: rgba(255,255,255,.88);
-  border-radius: 18px;
-  padding: 18px 22px;
-  margin: 13px 0;
-  line-height: 1.7;
+.steps li {
+    margin-bottom: 12px;
 }
 
-code {
-  background: #e5effb;
-  padding: 4px 8px;
-  border-radius: 7px;
-  color: #426b91;
+.download-area {
+    background: linear-gradient(#e4f4ff, #eff9f2);
 }
 
-/* DOWNLOAD */
-
-.download {
-  padding: 85px 20px;
+.download-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 850px;
+    margin: 35px auto 0;
 }
 
-.download-button {
-  display: inline-block;
-  padding: 15px 30px;
-  border-radius: 40px;
-  background: #91b6d7;
-  color: white;
-  font-weight: 900;
-  margin-top: 12px;
-  opacity: .75;
+.download-card {
+    background: white;
+    padding: 32px 24px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(91,130,160,0.1);
 }
 
-/* FOOTER */
+.download-card h3 {
+    font-size: 24px;
+    color: #526f8b;
+}
+
+.download-card p {
+    line-height: 1.7;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 25px;
+    border-radius: 30px;
+    background: #77b7df;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.download-btn:hover {
+    background: #589bc8;
+    transform: translateY(-2px);
+}
+
+.download-btn.disabled {
+    background: #aebbc7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.note {
+    font-size: 13px;
+    color: #7b8998;
+    margin-top: 14px;
+}
 
 footer {
-  position: relative;
-  text-align: center;
-  padding: 30px 15px;
-  background: rgba(255,255,255,.55);
-  color: #557b9d;
-  border-top: 2px solid rgba(255,255,255,.7);
-}
-
-/* MOBILE */
-
-@media(max-width: 600px) {
-  header {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  nav a {
-    margin: 0 8px;
-    font-size: .9rem;
-  }
-
-  .hero {
-    padding: 75px 18px 95px;
-    min-height: 480px;
-  }
-
-  section {
-    padding: 50px 6%;
-  }
-
-  .pixel-cloud {
-    opacity: .65;
-  }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  .pigeon {
-    animation: none;
-  }
-
-  html {
-    scroll-behavior: auto;
-  }
+    padding: 30px;
+    text-align: center;
+    background: rgba(255,255,255,0.7);
+    color: #71869b;
 }
 </style>
 </head>
@@ -333,136 +248,149 @@ footer {
 <body>
 
 <header>
-  <div class="logo">🐦 Pip the Pigeon</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#features">Features</a>
-    <a href="#install">Setup</a>
-    <a href="#download">Download</a>
-  </nav>
+    <div class="logo">🐦 Pip the Pigeon</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#setup">Setup</a>
+        <a href="#download">Download</a>
+    </nav>
 </header>
-
-<!-- THE CLOUDS LIVE INSIDE THIS BLUE SKY -->
 
 <div class="hero">
 
-  <div class="pixel-clouds" aria-hidden="true">
+    <div class="pixel-clouds">
 
-    <div class="pixel-cloud cloud-one">
-      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
-      </svg>
+        <svg class="cloud one" viewBox="0 0 160 70">
+            <path fill="#ffffff" d="M20 45h15V30h15V15h30v15h15v15h30v15H20z"/>
+            <path fill="#d8edfa" d="M20 60h120v-8H20z"/>
+        </svg>
+
+        <svg class="cloud two" viewBox="0 0 160 70">
+            <path fill="#ffffff" d="M20 45h15V30h15V15h30v15h15v15h30v15H20z"/>
+            <path fill="#d8edfa" d="M20 60h120v-8H20z"/>
+        </svg>
+
+        <svg class="cloud three" viewBox="0 0 160 70">
+            <path fill="#ffffff" d="M20 45h15V30h15V15h30v15h15v15h30v15H20z"/>
+            <path fill="#d8edfa" d="M20 60h120v-8H20z"/>
+        </svg>
+
     </div>
 
-    <div class="pixel-cloud cloud-two">
-      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
-      </svg>
+    <div class="hero-content">
+        <div class="pigeon">🐦</div>
+        <h1>Meet Pip!</h1>
+        <p>Your tiny pigeon friend who lives right on your desktop.</p>
+        <a class="download-btn" href="#download">Get Pip</a>
     </div>
-
-    <div class="pixel-cloud cloud-three">
-      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
-      </svg>
-    </div>
-
-    <div class="pixel-cloud cloud-four">
-      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
-      </svg>
-    </div>
-
-    <div class="pixel-cloud cloud-five">
-      <svg viewBox="0 0 20 10" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M5 2 H7 V1 H13 V2 H16 V3 H18 V5 H19 V7 H18 V8 H2 V7 H1 V5 H2 V4 H4 V3 H5 Z"/>
-        <path fill="#dceeff" d="M2 7 H18 V8 H2 Z M5 5 H7 V7 H5 Z M12 5 H15 V7 H12 Z"/>
-      </svg>
-    </div>
-
-  </div>
-
-  <div class="hero-content">
-    <div class="pigeon">🐦</div>
-    <h1>Meet Pip!</h1>
-    <p>Your tiny desktop pigeon friend. He wanders around your screen, chats with you, and absolutely loves bread.</p>
-  </div>
 
 </div>
 
 <section id="about">
-  <h2 class="section-title">A little bird for your desktop</h2>
-  <p class="intro">Pip isn't just a pet. He's a tiny companion who hangs out while you work, play, or simply enjoy your computer.</p>
-  <img class="screenshot" src="pip-desktop.png" alt="Pip the Pigeon on a desktop">
+    <h2 class="section-title">Who is Pip?</h2>
+    <div class="about">
+        <p>
+            Pip is a little pixel-inspired pigeon who wanders around your
+            Windows desktop, says silly things and keeps you company.
+        </p>
+        <p>
+            He can even chat with you using a locally running AI model.
+            Give him some bread and make his day! 🍞
+        </p>
+        <img class="screenshot"
+             src="pip-desktop.png"
+             alt="Pip the Pigeon on a desktop">
+    </div>
 </section>
 
 <section id="features">
-  <h2 class="section-title">What can Pip do?</h2>
-  <p class="intro">He's small, silly, and full of personality!</p>
+    <h2 class="section-title">What can Pip do?</h2>
 
-  <div class="features">
-    <div class="card">
-      <div class="emoji">🚶</div>
-      <h3>Wanders around</h3>
-      <p>Pip walks around your desktop and keeps you company.</p>
-    </div>
+    <div class="features">
+        <div class="card">
+            <div class="emoji">🚶</div>
+            <h3>Wanders Around</h3>
+            <p>Pip strolls around your desktop while you work.</p>
+        </div>
 
-    <div class="card">
-      <div class="emoji">💬</div>
-      <h3>Little messages</h3>
-      <p>Click Pip and he'll pop up with a random message.</p>
-    </div>
+        <div class="card">
+            <div class="emoji">💬</div>
+            <h3>Little Messages</h3>
+            <p>Click Pip to hear his silly pigeon thoughts.</p>
+        </div>
 
-    <div class="card">
-      <div class="emoji">🤖</div>
-      <h3>AI chat</h3>
-      <p>Right-click Pip to open a chat powered by your local Ollama model.</p>
-    </div>
+        <div class="card">
+            <div class="emoji">🤖</div>
+            <h3>AI Chat</h3>
+            <p>Right-click Pip to open his AI chat window.</p>
+        </div>
 
-    <div class="card">
-      <div class="emoji">🍞</div>
-      <h3>Give him bread!</h3>
-      <p>Offer Pip some bread and watch him get very excited.</p>
+        <div class="card">
+            <div class="emoji">🍞</div>
+            <h3>Bread Time!</h3>
+            <p>Give Pip bread and watch him get excited!</p>
+        </div>
     </div>
-  </div>
 </section>
 
-<section class="install" id="install">
-  <h2 class="section-title">Getting Pip ready</h2>
-  <p class="intro">Pip needs Ollama for his AI chat. Here's how to set it up.</p>
+<section id="setup">
+    <h2 class="section-title">What you'll need</h2>
 
-  <div class="steps">
-    <div class="step">
-      <strong>1. Install Ollama</strong><br>
-      Get Ollama from
-      <a href="https://ollama.com/download" target="_blank" rel="noopener noreferrer">ollama.com/download</a>.
+    <div class="steps">
+        <ol>
+            <li>Windows 10 or 11.</li>
+            <li>Python 3.10 or newer (for the Python Edition).</li>
+            <li>Ollama installed from
+                <a href="https://ollama.com" target="_blank">ollama.com</a>.
+            </li>
+            <li>The AI model downloaded using:
+                <code>ollama pull llama3.2:3b</code>
+            </li>
+            <li>An internet connection for the initial downloads.</li>
+        </ol>
     </div>
-
-    <div class="step">
-      <strong>2. Get Pip's AI model</strong><br>
-      Open Command Prompt and enter:<br>
-      <code>ollama pull llama3.2:3b</code>
-    </div>
-
-    <div class="step">
-      <strong>3. Open Pip!</strong><br>
-      Once the download is ready, start Pip and enjoy your new desktop friend.
-    </div>
-  </div>
 </section>
 
-<section class="download" id="download">
-  <h2 class="section-title">Bring Pip home!</h2>
-  <p class="intro">Pip's download is being prepared. Check back soon!</p>
-  <span class="download-button">🐦 Download coming soon!</span>
+<section id="download" class="download-area">
+    <h2 class="section-title">Bring Pip home!</h2>
+    <p>Choose the version you'd like to use.</p>
+
+    <div class="download-cards">
+
+        <div class="download-card">
+            <div class="emoji">🪟</div>
+            <h3>Windows Edition</h3>
+            <p>The easy-to-run Windows version. Just download and launch!</p>
+            <span class="download-btn disabled">
+                Coming Soon!
+            </span>
+            <div class="note">
+                Currently undergoing security reviews.
+            </div>
+        </div>
+
+        <div class="download-card">
+            <div class="emoji">🐍</div>
+            <h3>Python Edition</h3>
+            <p>Download Pip's Python files and run him with Python installed.</p>
+            <a class="download-btn"
+               href="PipPythonEdition.zip"
+               download>
+                Download Python Edition
+            </a>
+            <div class="note">
+                Requires Python and Ollama.
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <footer>
-  Made with 💙 and a little bit of bread 🍞<br>
-  © Pip the Pigeon
+    Made with 💜 and a little pigeon energy.
+    <br>
+    © 2026 Pip the Pigeon
 </footer>
 
 </body>

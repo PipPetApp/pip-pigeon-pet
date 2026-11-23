@@ -13,3 +13,7 @@ right click for ai chat. (ollama requierd. download in website.)
 
  WEBSITE LINK
   https://pippetapp.github.io/pip-pigeon-pet/
+
+
+How up to date is pip? 
+Pip knows anything that happened before 2024 January.

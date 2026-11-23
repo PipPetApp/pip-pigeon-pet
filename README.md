@@ -20,7 +20,14 @@ Pip knows anything that happened before 2024 January.
 
 
  How do i run pip?
+ 
 Step 1. Extract the zip file.
+
+
 Step 2. Open the file and type cmd in the addres bar.
+
+
 Step 3. Type python main.py
+
+
 He should be there. if not, send a comment.
